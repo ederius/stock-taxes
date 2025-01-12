@@ -1,0 +1,17 @@
+{
+  "name": "stock-taxes",
+  "version": "1.0.0",
+  "description": "CLI app to determine the taxes",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": "v23.6.0"
+  },
+  "author": ">=v2.13.0Eder Diaz Toro",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
