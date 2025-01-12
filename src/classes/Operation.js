@@ -9,6 +9,19 @@ class Operation{
         this.tax = 0.00
     }
 
+    get isBuyOperation(){
+        if(this.operation == "buy")
+            return true
+        return false
+    }
+
+
+    get isSellOperation(){
+        if(this.operation == "sell")
+            return true
+        return false
+    }
+
     getFloatFormat(num){
         return parseFloat(num.toFixed(2));
     }
@@ -47,12 +60,11 @@ class Operation{
         (this.newStock * this.newPrice)) / (stock + this.newStock)
     }
 
-
     
 }
 
+export default Operation;
 
-
-module.exports = {
-    Operation
-}
+// module.exports = {
+//     Operation
+// }

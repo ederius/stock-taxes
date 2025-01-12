@@ -1,5 +1,5 @@
-const readline = require('node:readline');
-const { processStockOperations} = require('./src/services')
+import readline from 'node:readline';
+import processStockOperations from './src/services.js';
 
 // Create a readline interface for reading from standard input
 const rl = readline.createInterface({
@@ -18,9 +18,12 @@ rl.on('line', (line) => {
             const taxes = processStockOperations(operations);
             console.log(taxes);
         } catch (error) {
-            console.error(error)
+            console.error(error);
+            
             console.error(`Error processing line: ${error.message}`);
         }
+    }else{
+        process.exit(0);
     }
 });
 
