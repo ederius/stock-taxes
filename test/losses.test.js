@@ -9,7 +9,7 @@ describe('Positive losses', () => {
         "operation": "sell"
       }
       const operation = new Operation(item);
-      loss = operation.getLoss(loss);
+      loss = operation.calculateLoss(loss);
       expect(loss).toBe(0);
     });
   });
