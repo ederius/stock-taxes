@@ -1,4 +1,5 @@
-const { getTax, processStockOperations } = require('../src/services');
+const { processStockOperations } = require('../src/services');
+const { Operation } = require('../src/classes/Operation');
 
 describe('Stock Taxes', () => {
   it('Case #1', () => {
@@ -69,12 +70,18 @@ describe('Stock Taxes', () => {
 
 describe('Taxes format', () => {
   it('Decimal tax format', ()=> {
+    const item = {
+      "quantity": 4,
+      "unit-cost": 10000.13,
+      "operation": "sell"
+    }
     const profit = 100000.10;
-    const price = 10000.00
+    const price = 100.56
     const stock = 20
-    const losses = 20000
-    const totalAmount = price*stock;
-    tax = getTax(totalAmount, profit, losses);
-    expect(tax).toBeCloseTo(16000.02);
+    const loss = 0
+    const operation = new Operation(item);
+
+    tax = operation.getTax(price, loss)
+    expect(tax).toBeCloseTo(7919.66);
   })
 })

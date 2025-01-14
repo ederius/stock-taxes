@@ -1,4 +1,4 @@
-import Operation from './classes/Operation.js';
+const { Operation } = require('./classes/Operation.js');
 
 
 const processStockOperations = (operations) => {
@@ -27,4 +27,19 @@ const processStockOperations = (operations) => {
      return taxes;
  }
 
- export default processStockOperations;
+
+ const processLines = (lines) => {
+    console.log("\n");
+    lines.forEach(operations => {
+        try {
+            // Parse the input line as a JSON array
+            const taxes = processStockOperations(operations);
+            console.log(taxes);
+        } catch (error) {
+            console.error(`Error processing the operation: ${error.message}`);
+        }
+    })
+    process.exit(0);
+ }
+
+ module.exports = { processStockOperations, processLines };

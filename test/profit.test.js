@@ -1,12 +1,16 @@
-const { getProfit } = require('../src/services');
+const { Operation } = require('../src/classes/Operation');
 
 describe('Profit tests', () => {
     it('Profit with losses', ()=> {
-        const newPrice = 10.10
-        const price = 20.22
-        const newStock = 10
-        const profit = getProfit(price, newPrice, newStock)
-        expect(profit).toBeCloseTo(-101.20);
+      const item = {
+        "quantity": 10,
+        "unit-cost": 10.10,
+        "operation": "sell"
+      }
+      const price = 20.22;
+      const operation = new Operation(item);
+      operation.calculateProfit(price);
+      expect(operation.profit).toBeCloseTo(-101.20);
 
-      })
+    })
 })

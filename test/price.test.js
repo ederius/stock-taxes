@@ -1,12 +1,16 @@
-const { getWeightedAveragePrice } = require('../src/services');
+const { Operation } = require('../src/classes/Operation');
 
 describe('Weighted Average Price', () => {
-  it('Rounding decimal prices', () => {
-    const currentPrice = 10;
-    const currentStock = 2;
-    const newPrice = 20;
-    const newStock = 4;
-    const price = getWeightedAveragePrice(currentPrice, currentStock, newPrice, newStock);
+  it('Rounding decimal price', () => {
+    let price = 10;
+    const stock = 2;
+    const item = {
+      "quantity": 4,
+      "unit-cost": 20,
+      "operation": "sell"
+    }
+    const operation = new Operation(item);
+    price = operation.getWeightedAveragePrice(price, stock);
     expect(price).toBeCloseTo(16.67);
   });
 });

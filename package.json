@@ -4,15 +4,17 @@
   "description": "CLI app to determine the taxes",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "npx jest --coverage"
   },
   "engines": {
-    "node": "v23.6.0"
+    "node": ">=v22.13.0"
   },
-  "author": ">=v2.13.0Eder Diaz Toro",
+  "author": "Eder Diaz Toro",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0"
   },
-  "type": "module"
+  "jest": {
+  "collectCoverage": true
+}
 }

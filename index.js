@@ -1,5 +1,5 @@
-import readline from 'node:readline';
-import processStockOperations from './src/services.js';
+const readline = require('readline');
+const { processStockOperations, processLines } = require('./src/services.js');
 
 // Create a readline interface for reading from standard input
 const rl = readline.createInterface({
@@ -8,23 +8,27 @@ const rl = readline.createInterface({
     terminal: true,
 });
 
-console.log("Enter stock operations (JSON format) line by line. Press Ctrl+D (Linux/macOS) or Ctrl+Z (Windows) to finish:");
+const lines = [];
 
-rl.on('line', (line) => {
+//console.log("Enter stock operations (JSON format) line by line. Press Ctrl+D (Linux/macOS) or Ctrl+Z (Windows) to finish:");
+
+rl.on('line', (line) => {    
     if (line.trim() !== '') {
-        try {
-            // Parse the input line as a JSON array
-            const operations = JSON.parse(line);
-            const taxes = processStockOperations(operations);
-            console.log(taxes);
+        try{            
+            lines.push(JSON.parse(line))
         } catch (error) {
-            console.error(error);
-            
             console.error(`Error processing line: ${error.message}`);
         }
     }else{
-        process.exit(0);
+        // triggered when the lines come from the CLI
+        processLines(lines);
+
     }
 });
+
+rl.on("close", ()=>{
+    // triggered when the input con from a file
+    processLines(lines);
+})
 
 

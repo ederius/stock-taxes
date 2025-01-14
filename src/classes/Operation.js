@@ -60,11 +60,6 @@ class Operation{
         (this.newStock * this.newPrice)) / (stock + this.newStock)
     }
 
-    
 }
 
-export default Operation;
-
-// module.exports = {
-//     Operation
-// }
+module.exports = { Operation };

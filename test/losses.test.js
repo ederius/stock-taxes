@@ -1,10 +1,15 @@
-const { getLosses } = require('../src/services');
+const { Operation } = require('../src/classes/Operation');
 
 describe('Positive losses', () => {
     it('Profit with not losses', () => {
-      const profit = 10;
-      let losses = 0
-      losses = getLosses(profit, losses);
-      expect(losses).toBe(0);
+      let loss = 0
+      const item = {
+        "quantity": 10,
+        "unit-cost": 30.10,
+        "operation": "sell"
+      }
+      const operation = new Operation(item);
+      loss = operation.getLoss(loss);
+      expect(loss).toBe(0);
     });
   });
